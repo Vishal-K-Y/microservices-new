@@ -19,4 +19,10 @@ public class OrderController {
         orderService.placeOrder(orderRequest);
         return "Order Placed Successfully";
     }
+
+    @GetMapping("/hello")
+    public String hello(){
+        System.out.println("====called=====");
+        return "hello from order service";
+    }
 }

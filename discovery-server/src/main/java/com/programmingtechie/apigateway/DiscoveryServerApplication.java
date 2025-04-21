@@ -1,4 +1,4 @@
-package com.programmingtechie.discoveryservice;
+package com.programmingtechie.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

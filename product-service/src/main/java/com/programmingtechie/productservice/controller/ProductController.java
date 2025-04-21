@@ -28,4 +28,9 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping("/hello")
+    public String hello(){
+        System.out.println("====called=====");
+        return "hello from product service";
+    }
 }
