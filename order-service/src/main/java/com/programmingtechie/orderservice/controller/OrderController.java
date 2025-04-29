@@ -23,9 +23,13 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED)
     @CircuitBreaker(name = "inventory", fallbackMethod = "fallbacklogic")
     @TimeLimiter(name= "inventory")
-    public String placeOrder(@RequestBody OrderRequest orderRequest) {
-        orderService.placeOrder(orderRequest);
-        return "Order Placed Successfully";
+    public CompletableFuture<String> placeOrder(@RequestBody OrderRequest orderRequest) {
+        //orderService.placeOrder(orderRequest);
+        //return "Order Placed Successfully";
+        return CompletableFuture.supplyAsync(() -> {
+            orderService.placeOrder(orderRequest);
+            return "Order Placed Successfully";
+        });
     }
 
     public CompletableFuture<String> fallbackMethod(OrderRequest orderRequest, RuntimeException runtimeException) {
